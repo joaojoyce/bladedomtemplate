@@ -1,0 +1,12 @@
+{
+    "name": "joyce/domtemplate",
+    "description": "Build your website views directly from your designers static HTML.",
+    "require": {
+    },
+    "authors": [
+        {
+            "name": "Joao Joyce",
+            "email": "joao.joyce@netcabo.pt"
+        }
+    ]
+}
