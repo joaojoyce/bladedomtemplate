@@ -8,5 +8,10 @@
             "name": "Joao Joyce",
             "email": "joao.joyce@netcabo.pt"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "Joyce\\DomTemplate": "src/"
+        }
+    }
 }
