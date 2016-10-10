@@ -22,9 +22,9 @@ class BladeDOMTemplate extends DOMTemplate
         return $this;
     }
 
-    public function setValues($data) {
+    public function setValues($data,$asHtml = false) {
         foreach($data as $key => $item) {
-            $this->setValue($key,$item);
+            $this->setValue($key,$item,$asHtml);
         }
         return $this;
     }

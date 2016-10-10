@@ -1,5 +1,7 @@
 <?php  namespace Joyce\DomTemplate; 
 
+use ReflectionClass;
+
 class DomTemplateService {
 
     private $base_cache_key = '';
@@ -17,7 +19,13 @@ class DomTemplateService {
         $file_name = config('domtemplate.base_template_files') . $template_name;
 
         $cache_key = json_encode($data);
-        $cache_key = $this->base_cache_key . $template_name . '.' . filemtime($file_name) . '.' . $root  . '.'. $cache_key;
+        if($view) {
+            list($template_class_name,$template_method) = $this->parseViewName($view);
+            $reflector = new ReflectionClass($template_class_name);
+            $cache_key = $this->base_cache_key . $template_name . '.' . filemtime($file_name) . '.' . filemtime($reflector->getFileName())  . '.'  . $root  . '.'. $cache_key;
+        } else {
+            $cache_key = $this->base_cache_key . $template_name . '.' . filemtime($file_name) . '.' . $root  . '.'. $cache_key;
+        }
 
         if($cache_key) {
 
